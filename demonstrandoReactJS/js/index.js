@@ -1,28 +1,34 @@
-//Parâmetros: React.createElement(tag, propriedades, filhos)
-const ourHello = React.createElement("h1", null, "OLÁ!")
+class OurHelloWhitClass extends React.Component {
+  render () {
+    return (
+      <h1 className= "my-title">Olá!<h1/>
+    );
+  }
+}
 
-const ourHelloWithClass = React.createElement(
-  "h1",
-  { className: "my-title" },
-  "OLÁ!"
-)
+class OurList extends React.Component {
+  render () {
+    return (
+      <ul>
+        <li className="item-01">item 01</li>
+        <li className="item-02">item 02</li>
+        <li className="item-03">item 03</li>
+      </ul>
+    );
+  }
+}
 
-const ourList = React.createElement(
-  "ul",
-  null,
-  [
-    React.createElement("li", { className: "item01" }, "item01"),
-    React.createElement("li", { className: "item02" }, "item02"),
-    React.createElement("li", { className: "item03" }, "item03"),
-  ]
-)
-
-const myWrapper = React.createElement(
-  "div",
-  { className: "my-wrapper" },
-  [ourHelloWithClass, ourList]
-)
+class MyWrapper extends React.Component {
+  render () {
+    return (
+      <div className='my-wrapper'>
+        <OurHelloWithClass/>
+        <OurList/>
+      </div>
+    );
+  }
+}
 
 //ReactDOM.render(componente, container)
 const container = document.getElementById("app")
-ReactDOM.render(myWrapper, container)
+ReactDOM.render(<MyWrapper/>, container)
