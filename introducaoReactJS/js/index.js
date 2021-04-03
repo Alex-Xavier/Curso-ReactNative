@@ -1,7 +1,7 @@
 class OurHelloWhitClass extends React.Component {
   render () {
     return (
-      <h1 className= "my-title">Olá!<h1/>
+      <h1 className="my-title">Olá!</h1>
     );
   }
 }
