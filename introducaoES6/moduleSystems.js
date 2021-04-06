@@ -3,7 +3,7 @@ define (['./lib/Jquery.js'], function($) {
   $.ajax
 })
 
-//Module System - Common JS
+//Module System - Common JS - NodeJS
 var express = require('express')
 
 //Module System - EC6
