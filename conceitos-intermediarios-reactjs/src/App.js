@@ -20,8 +20,18 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>{ this.state.contador }</h1>
+        <Contador valor={this.state.contador} />
         <h2>{ this.state.nome }</h2>
+      </div>
+    )
+  }
+}
+
+class Contador extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{ this.props.valor }</h1>
       </div>
     )
   }
