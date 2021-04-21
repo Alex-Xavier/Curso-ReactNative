@@ -6,25 +6,37 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      contador: 0,
-      nome: 'Alex Xavier'
+      contador: 0
     }
   }
 
-  render() {
-    setTimeout(() => {
-      this.setState({
-        contador: this.state.contador + 1
-      })
-    }, 1000)
+  onClickHandler() {
+    this.setState({
+      contador: this.state.contador + 1
+    })
+  }
 
+  render() {
     return (
       <div>
         <Contador valor={this.state.contador} />
-        <h2>{ this.state.nome }</h2>
+        <Button
+          label='Adicionar'
+          onClick={() => this.onClickHandler()} />
+        <Button
+          label='Escreve no console'
+          onClick={() => console.log('Olá!!')} />
       </div>
     )
   }
+}
+
+//Functional Component
+// Componentização de <button onClick={() => this.onClickHandler()}>Adicionar</button>
+const Button = (props) => {
+  <div>
+    <button onClick={() => props.onClick()}>{ props.label }</button>
+  </div>
 }
 
 //Functional Component
