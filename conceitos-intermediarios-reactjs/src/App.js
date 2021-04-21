@@ -27,7 +27,16 @@ class App extends React.Component {
   }
 }
 
-class Contador extends React.Component {
+//Functional Component
+const Contador = (props) => {
+  return(
+    <div>
+      <h1>{ props.valor }</h1>
+    </div>
+  )
+}
+
+/*class Contador extends React.Component {
   render() {
     return (
       <div>
@@ -35,6 +44,6 @@ class Contador extends React.Component {
       </div>
     )
   }
-}
+}*/
 
 export default App
