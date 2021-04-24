@@ -11,9 +11,9 @@ export default Header;
 
 style = StyleSheet.create({
   container: {
-    marginTop: 25,
+    marginTop: 30,
     backgroundColor: '#6ca2f7',
-    alignItens: 'center',
+    alignItems: 'center',
     justifyContent: 'center'
   },
   title: {
