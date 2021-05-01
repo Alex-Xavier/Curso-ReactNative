@@ -42,5 +42,5 @@ getDataFromServer('www.api.com')
     console.log('Then sendo executado. Data: ', data)
   })
   .catch(error => {
-    console.log('Catch sedo executado. Error: ', error)
+    console.log('Catch sendo executado. Error: ', error)
   })
