@@ -6,14 +6,23 @@ import axios from 'axios'
 import Header from './src/components/Header'
 
 export default class App extends React.Component {
-  renderList() {
+  constructor(props) {
+    super(props)
 
+    this.state = {
+      peoples: []
+    }
+  }
+
+  componentDidMount() {
     // Promises
     axios
       .get('https://randomuser.me/api/?nat=br&results=5')
       .then(response => {
         const { results } = response.data
-        const name = results.map(people => people.name.first)
+        this.setState({
+          peoples: results
+        })
       })
   }
   
