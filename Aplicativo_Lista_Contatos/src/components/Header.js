@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-const Header = (props) => (
+const Header = props => (
   <View style={style.container}>
     <Text style={style.title}>{ props.title }</Text>
   </View>

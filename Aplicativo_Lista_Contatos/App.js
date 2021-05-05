@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 
 import axios from 'axios'
 
 import Header from './src/components/Header'
+import PeopleList from './src/components/PeopleList'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,20 +27,11 @@ export default class App extends React.Component {
       })
   }
 
-  renderList() {
-    const textElements = this.state.peoples.map(people => {
-      const { first } = people.name
-      return <Text key={first}>{ first }</Text>
-    })
-
-    return textElements
-  }
-  
   render () {
     return (
       <View>
         <Header title='Pessoas!' />
-        {this.renderList()}
+        <PeopleList peoples={this.state.peoples} />
       </View>
     )
   }
