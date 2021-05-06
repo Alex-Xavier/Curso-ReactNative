@@ -3,8 +3,7 @@ import { View } from 'react-native'
 
 import axios from 'axios'
 
-import Header from './src/components/Header'
-import PeopleList from './src/components/PeopleList'
+import { Header, PeopleList } from './src/components'
 
 export default class App extends React.Component {
   constructor(props) {
