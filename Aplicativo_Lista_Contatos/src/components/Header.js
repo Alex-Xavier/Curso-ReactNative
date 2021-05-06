@@ -2,14 +2,14 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const Header = props => (
-  <View style={style.container}>
-    <Text style={style.title}>{ props.title }</Text>
+  <View style={styles.container}>
+    <Text style={styles.title}>{ props.title }</Text>
   </View>
 )
 
 export default Header;
 
-style = StyleSheet.create({
+styles = StyleSheet.create({
   container: {
     marginTop: 30,
     backgroundColor: '#6ca2f7',
