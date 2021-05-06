@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 
 const PeopleListItem = props => {
   const { people } = props
@@ -7,6 +7,8 @@ const PeopleListItem = props => {
   
   return (
     <View style={styles.line}>
+      <Image style={styles.avatar} source={{ uri: people.picture.thumbnail }} />
+
       <Text style={styles.lineText}>
         { `${first} ${last}` }
       </Text>
@@ -24,7 +26,12 @@ const styles = StyleSheet.create({
   },
   lineText: {
     fontSize: 20,
-    paddingLeft: 15
+    paddingLeft: 15,
+    flex: 7
+  },
+  avatar: {
+    aspectRatio: 1,
+    width: 40
   }
 })
 
