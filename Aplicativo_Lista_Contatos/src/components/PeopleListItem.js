@@ -8,7 +8,7 @@ const PeopleListItem = props => {
   return (
     <View style={styles.line}>
       <Text style={styles.lineText}>
-        { first }
+        { `${first} ${last}` }
       </Text>
     </View>
   )
