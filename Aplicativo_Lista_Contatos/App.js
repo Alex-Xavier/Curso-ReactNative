@@ -1,11 +1,14 @@
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 
-import { PeopleScreen } from './src/screens'
+import { PeopleScreen, PeopleDetailScreen } from './src/screens'
 
 const AppNavigator = createStackNavigator({
-  Main: {
+  People: {
     screen: PeopleScreen
+  },
+  PeopleDetail: {
+    screen: PeopleDetailScreen
   }
 }, {
   defaultNavigationOptions: {

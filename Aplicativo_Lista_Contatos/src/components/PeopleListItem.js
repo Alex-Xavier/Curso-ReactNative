@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const PeopleListItem = props => {
-  const { people } = props
+  const { people, navigateToPeopleDetail } = props
   const { first, last } = people.name
   
   return (
-    <TouchableOpacity onPress={() => console.log('Clicou!!')}>
+    <TouchableOpacity onPress={() => navigateToPeopleDetail()}>
       <View style={styles.line}>
         <Image style={styles.avatar} source={{ uri: people.picture.thumbnail }} />
 
