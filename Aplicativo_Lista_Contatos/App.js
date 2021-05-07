@@ -8,11 +8,24 @@ const AppNavigator = createStackNavigator({
     screen: PeopleScreen
   },
   PeopleDetail: {
-    screen: PeopleDetailScreen
+    screen: PeopleDetailScreen,
+    navigationOptions: ({ navigation }) => {
+      const { first, last } = navigation.state.params.people.name
+
+      return ({
+        title: `${first} ${last}`,
+        headerTitleStyle: {
+          color: '#FFF',
+          fontSize: 25,
+          flexGrow: 1
+        }
+      })
+    }
   }
 }, {
   defaultNavigationOptions: {
     title: 'Pessoas!',
+    headerTintColor: '#FFF',
     headerStyle: {
       backgroundColor: '#6ca2f7',
       borderBottomWidth: 1,
@@ -22,7 +35,7 @@ const AppNavigator = createStackNavigator({
       color: '#FFF',
       fontSize: 30,
       flexGrow: 1,
-      textAlign: 'center'
+      alignSelf: 'center'
     }
   }
 })

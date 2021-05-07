@@ -31,7 +31,7 @@ export default class PeopleScreen extends React.Component {
       <View>
         <PeopleList
           peoples={this.state.peoples}
-          onPressItem={() => this.props.navigation.navigate('PeopleDetail')} />
+          onPressItem={screenParams => this.props.navigation.navigate('PeopleDetail', screenParams)} />
       </View>
     )
   }
