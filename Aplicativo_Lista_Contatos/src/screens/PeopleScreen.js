@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import axios from 'axios'
 
-import { Header, PeopleList } from '../components'
+import { PeopleList } from '../components'
 
 export default class PeopleScreen extends React.Component {
   constructor(props) {
@@ -29,7 +29,6 @@ export default class PeopleScreen extends React.Component {
   render () {
     return (
       <View>
-        <Header title='Pessoas!' />
         <PeopleList peoples={this.state.peoples} />
       </View>
     )
