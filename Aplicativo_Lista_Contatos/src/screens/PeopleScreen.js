@@ -17,7 +17,7 @@ export default class PeopleScreen extends React.Component {
   componentDidMount() {
     // Promises
     axios
-      .get('https://randomuser.me/api/?nat=br&results=5')
+      .get('https://randomuser.me/api/?nat=br&results=1000')
       .then(response => {
         const { results } = response.data
         this.setState({
