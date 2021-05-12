@@ -1,11 +1,21 @@
 import React from 'react'
 import { View, Text, StyleSheet} from 'react-native'
 
-const Line = ({ label, content }) => {
+const Line = ({ label = '', content = 'Não encontrado' }) => {
+  const { line, cell, labelStyle, contentStyle, longLabel } = styles
+
   return (
-    <View style={styles.line}>
-      <Text style={[styles.cell, styles.label]}>{ label }</Text>
-      <Text style={styles.cell}>{ content }</Text>
+    <View style={line}>
+      <Text style={[
+        cell,
+        labelStyle,
+        label.length > 9 ? longLabel : null
+        ]}>{ label }</Text>
+      
+      <Text style={[
+        cell,
+        contentStyle
+      ]}>{ content }</Text>
     </View>
   )
 }
@@ -22,8 +32,15 @@ const styles = StyleSheet.create({
     fontSize: 18,
     paddingLeft: 5
   },
-  label: {
-    fontWeight: 'bold'
+  labelStyle: {
+    fontWeight: 'bold',
+    flex: 1
+  },
+  contentStyle: {
+    flex: 3
+  },
+  longLabel: {
+    fontSize: 12
   }
 })
 

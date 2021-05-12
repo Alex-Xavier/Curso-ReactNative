@@ -19,7 +19,7 @@ export default class PeopleDetailScreen extends React.Component {
           <Line label='Estado:' content={people.location.state} />
           <Line label='Telefone:' content={people.phone} />
           <Line label='Celular:' content={people.cell} />
-          <Line label='Nacionalidade:' content={people.nat} />
+          <Line label='País:' content={people.nat} />
         </View>
       </View>
     )
