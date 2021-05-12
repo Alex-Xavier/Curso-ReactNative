@@ -13,13 +13,8 @@ export default class PeopleDetailScreen extends React.Component {
 
         <View style={styles.detailContainer}>
           <View style={styles.line}>
-            <Text style={styles.cellLabel}>Email: </Text>
-            <Text style={styles.cellContent}>{ people.email }</Text>
-          </View>
-
-          <View style={styles.line}>
-            <Text style={styles.cellLabel}>Email: </Text>
-            <Text style={styles.cellContent}>{ people.email }</Text>
+            <Text style={[styles.cell, styles.label]}>Email: </Text>
+            <Text style={styles.cell}>{ people.email }</Text>
           </View>
         </View>
       </View>
@@ -46,13 +41,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#C5C5C5'
   },
-  cellLabel: {
-    fontSize: 18,
-    paddingLeft: 5,
-    fontWeight: 'bold'
-  },
-  cellContent: {
+  cell: {
     fontSize: 18,
     paddingLeft: 5
+  },
+  label: {
+    fontWeight: 'bold'
   }
 })
