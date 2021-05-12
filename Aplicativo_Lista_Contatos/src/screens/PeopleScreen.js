@@ -17,7 +17,7 @@ export default class PeopleScreen extends React.Component {
 
   componentDidMount() {
     this.setState({ loading: true })
-    
+
     setTimeout(() => {
       axios
         .get('https://randomuser.me/api/?nat=br&results=1000')
@@ -34,7 +34,11 @@ export default class PeopleScreen extends React.Component {
   render () {
     return (
       <View>
-        <ActivityIndicator size='large' color='#6ca2f7' />
+        {
+          this.state.loading
+            ? <ActivityIndicator size='large' color='#6ca2f7' />
+            : null
+        }
 
         <PeopleList
           peoples={this.state.peoples}
