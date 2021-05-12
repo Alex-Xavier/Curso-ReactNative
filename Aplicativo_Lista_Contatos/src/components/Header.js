@@ -7,8 +7,6 @@ const Header = props => (
   </View>
 )
 
-export default Header;
-
 styles = StyleSheet.create({
   container: {
     marginTop: 30,
@@ -21,3 +19,5 @@ styles = StyleSheet.create({
     color: '#FFF'
   }
 })
+
+export default Header
