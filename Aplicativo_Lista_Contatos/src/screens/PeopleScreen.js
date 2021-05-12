@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, ActivityIndicator, Text, StyleSheet } from 'react-native'
 
 import axios from 'axios'
 
@@ -11,7 +11,8 @@ export default class PeopleScreen extends React.Component {
 
     this.state = {
       peoples: [],
-      loading: false
+      loading: false,
+      error: false
     }
   }
 
@@ -27,6 +28,11 @@ export default class PeopleScreen extends React.Component {
             peoples: results,
             loading: false
           })
+        }).catch(error => {
+          this.setState({
+            loading: false,
+            error: true
+          })
         })
     }, 1500)
   }
@@ -37,7 +43,9 @@ export default class PeopleScreen extends React.Component {
         {
           this.state.loading
             ? <ActivityIndicator size='large' color='#6ca2f7' />
-            : <PeopleList
+            : this.state.error
+              ? <Text style={styles.error}>Ops... Algo deu errado =(</Text>
+              : <PeopleList
                 peoples={this.state.peoples}
                 onPressItem={screenParams =>
                   this.props.navigation.navigate('PeopleDetail', screenParams)} />
@@ -51,5 +59,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center'
+  },
+  error: {
+    color: 'red',
+    alignSelf: 'center',
+    fontSize: 20
   }
 })

@@ -16,7 +16,7 @@ const PeopleList = props => {
           navigateToPeopleDetail={onPressItem}
         />
       )}
-      keyExtractor={item => `${item.name.first}${item.name.last}`} />
+      keyExtractor={item => item.login.username} />
   )
 }
 
