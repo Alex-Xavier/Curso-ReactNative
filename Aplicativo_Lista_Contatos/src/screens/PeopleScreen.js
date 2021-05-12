@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ActivityIndicator } from 'react-native'
+import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
 import axios from 'axios'
 
@@ -33,17 +33,23 @@ export default class PeopleScreen extends React.Component {
 
   render () {
     return (
-      <View>
+      <View style={styles.container}>
         {
           this.state.loading
             ? <ActivityIndicator size='large' color='#6ca2f7' />
-            : null
+            : <PeopleList
+                peoples={this.state.peoples}
+                onPressItem={screenParams =>
+                  this.props.navigation.navigate('PeopleDetail', screenParams)} />
         }
-
-        <PeopleList
-          peoples={this.state.peoples}
-          onPressItem={screenParams => this.props.navigation.navigate('PeopleDetail', screenParams)} />
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  }
+})
