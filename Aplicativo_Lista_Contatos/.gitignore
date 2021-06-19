@@ -13,9 +13,5 @@ node_modules
 # Arquivo oculto temporário do VSCode
 *.vscode
 
-# website: https://facebook.github.io/watchman/
-# Arquivo oculto temporário do Watchman
-*.watchmanconfig
-
 # Arquivo de chave identificadora de publicação
 *.jks
