@@ -1,17 +1,34 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
+
+import FormRow from '../components/FormRow'
 
 const Login = () => {
   return (
-    <View style={styles.container}>
-      <Text>Tela de Login!!</Text>
-    </View>
+    <>
+      <FormRow>
+        <TextInput
+          style={styles.input}
+          placeholder='usuário@email.com'
+        />
+      </FormRow>
+
+      <FormRow>
+        <TextInput
+          style={styles.input}
+          placeholder='********'
+          secureTextEntry
+        />
+      </FormRow>
+    </>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
+  input: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingBottom: 5
   }
 })
 
