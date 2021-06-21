@@ -1,19 +1,14 @@
 import React from 'react'
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native'
 
-const StandardContainer = ({ children }) => {
-  return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <StatusBar />
-
-        {children}
-      </SafeAreaView>
-    </>
-  )
-}
-
-export default StandardContainer
+const StandardContainer = ({ children }) => (
+  <>
+    <SafeAreaView style={styles.container}>
+      <StatusBar />
+      {children}
+    </SafeAreaView>
+  </>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -21,3 +16,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   }
 })
+
+export default StandardContainer
