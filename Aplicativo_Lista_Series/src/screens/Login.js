@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { TextInput, Button, StyleSheet } from 'react-native'
 
 import FormRow from '../components/FormRow'
 
@@ -17,6 +17,10 @@ export default class Login extends React.Component {
     this.setState({
       [field]: value
     })
+  }
+
+  tryLogin() {
+    console.log(this.state)
   }
 
   render() {
@@ -40,6 +44,11 @@ export default class Login extends React.Component {
             onChangeText={value => this.onChangeHandler('password', value)}
           />
         </FormRow>
+
+        <Button
+          title='Entrar'
+          onPress={() => this.tryLogin()}
+        />
       </>
     )
   }
