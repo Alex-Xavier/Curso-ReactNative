@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextInput, Button, StyleSheet } from 'react-native'
+import { View, TextInput, Button, StyleSheet } from 'react-native'
 
 import FormRow from '../components/FormRow'
 
@@ -25,8 +25,8 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <>
-        <FormRow>
+      <View style={styles.container}>
+        <FormRow first>
           <TextInput
             style={styles.input}
             placeholder='usuário@email.com'
@@ -35,7 +35,7 @@ export default class Login extends React.Component {
           />
         </FormRow>
 
-        <FormRow>
+        <FormRow last>
           <TextInput
             style={styles.input}
             placeholder='********'
@@ -49,15 +49,17 @@ export default class Login extends React.Component {
           title='Entrar'
           onPress={() => this.tryLogin()}
         />
-      </>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 10
+  },
   input: {
-    paddingLeft: 5,
-    paddingRight: 5,
+    paddingHorizontal: 5,
     paddingBottom: 5
   }
 })
