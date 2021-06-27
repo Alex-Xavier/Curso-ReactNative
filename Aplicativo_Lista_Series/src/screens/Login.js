@@ -1,5 +1,8 @@
 import React from 'react'
-import { View, TextInput, Button, StyleSheet } from 'react-native'
+import { View, TextInput, Button, ActivityIndicator, StyleSheet } from 'react-native'
+
+import firebase from '@firebase/app'
+import '@firebase/auth'
 
 import FormRow from '../components/FormRow'
 
@@ -9,7 +12,22 @@ export default class Login extends React.Component {
 
     this.state = {
       mail: '',
-      password: ''
+      password: '',
+      isLoading: false
+    }
+  }
+
+  componentDidMount() {
+    // Inicialização do Firebase
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: 'AIzaSyCM5PJPY4GuZrysl6jTSQKf_FU5UrwvNKk',
+        authDomain: 'aplicativo-lista-de-series.firebaseapp.com',
+        projectId: 'aplicativo-lista-de-series',
+        storageBucket: 'aplicativo-lista-de-series.appspot.com',
+        messagingSenderId: '69811575936',
+        appId: '1:69811575936:web:f9774b4d568557c3c5da65'
+      })
     }
   }
 
@@ -20,7 +38,20 @@ export default class Login extends React.Component {
   }
 
   tryLogin() {
-    console.log(this.state)
+    this.setState({ isLoading: true })
+
+    const { mail, password } = this.state
+
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(mail, password)
+      .then(user => {
+        console.log('Usuário autenticado!!', user)
+      })
+      .catch(error => {
+        console.log('Usuário não encontrado!!', error)
+      })
+      .then(() => this.setState({ isLoading: false }))
   }
 
   render() {
@@ -45,10 +76,12 @@ export default class Login extends React.Component {
           />
         </FormRow>
 
-        <Button
-          title='Entrar'
-          onPress={() => this.tryLogin()}
-        />
+        {this.state.isLoading ? <ActivityIndicator size='large' color='#6ca2f7' /> :
+          <Button
+            title='Entrar'
+            onPress={() => this.tryLogin()}
+          />
+        }
       </View>
     )
   }
