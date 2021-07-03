@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, Button, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, TextInput, Button, ActivityIndicator, Text, StyleSheet } from 'react-native'
 
 import firebase from '@firebase/app'
 import '@firebase/auth'
@@ -13,7 +13,8 @@ export default class Login extends React.Component {
     this.state = {
       mail: '',
       password: '',
-      isLoading: false
+      isLoading: false,
+      message: ''
     }
   }
 
@@ -37,8 +38,21 @@ export default class Login extends React.Component {
     })
   }
 
+  getMessageByErrorCode(errorCode) {
+    switch (errorCode) {
+      case 'auth/wrong-password':
+        return 'Senha incorreta! Por favor digite a senha novamente com atenção.'
+
+      case 'auth/user-not-found':
+        return 'E-mail não encontrado em nossa base! Por favor revise o e-mail inserido com atenção.'
+
+      default:
+        return 'Ocorreu um erro não esperado! Por favor tente mais tarde.'
+    }
+  }
+
   tryLogin() {
-    this.setState({ isLoading: true })
+    this.setState({ isLoading: true, message: '' })
 
     const { mail, password } = this.state
 
@@ -46,10 +60,12 @@ export default class Login extends React.Component {
       .auth()
       .signInWithEmailAndPassword(mail, password)
       .then(user => {
-        console.log('Usuário autenticado!!', user)
+        this.setState({ message: 'Sucesso!' })
       })
       .catch(error => {
-        console.log('Usuário não encontrado!!', error)
+        this.setState({
+          message: this.getMessageByErrorCode(error.code)
+        })
       })
       .then(() => this.setState({ isLoading: false }))
   }
@@ -76,11 +92,23 @@ export default class Login extends React.Component {
           />
         </FormRow>
 
-        {this.state.isLoading ? <ActivityIndicator size='large' color='#6ca2f7' /> :
-          <Button
-            title='Entrar'
-            onPress={() => this.tryLogin()}
-          />
+        {
+          this.state.isLoading ?
+            <ActivityIndicator size='large' color='#6ca2f7' />
+          :
+            <Button
+              title='Entrar'
+              onPress={() => this.tryLogin()}
+            />
+        }
+
+        {
+          this.state.message ?
+            <View>
+              <Text>{this.state.message}</Text>
+            </View>
+          :
+            null
         }
       </View>
     )
