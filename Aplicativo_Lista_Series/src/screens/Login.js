@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TextInput, Button, ActivityIndicator, Text, StyleSheet } from 'react-native'
+import { Alert, View, TextInput, Button, ActivityIndicator, Text, StyleSheet } from 'react-native'
 
 import firebase from '@firebase/app'
 import '@firebase/auth'
@@ -53,19 +53,46 @@ export default class Login extends React.Component {
 
   tryLogin() {
     this.setState({ isLoading: true, message: '' })
-
     const { mail, password } = this.state
+
+    const loginUserSucess = user => {
+      this.setState({ message: 'Sucesso!' })
+    }
+
+    const loginUserFailed = error => {
+      this.setState({
+        message: this.getMessageByErrorCode(error.code)
+      })
+    }
 
     firebase
       .auth()
       .signInWithEmailAndPassword(mail, password)
-      .then(user => {
-        this.setState({ message: 'Sucesso!' })
-      })
+      .then(loginUserSucess)
       .catch(error => {
-        this.setState({
-          message: this.getMessageByErrorCode(error.code)
-        })
+        if (error.code === 'auth/user-not-found') {
+          Alert.alert(
+            'Usuário não encontrado',
+            'Deseja criar um cadastro com as informações inseridas?',
+            [{
+              text: 'Não',
+              style: 'cancel' // IOS
+            }, {
+              text: 'Sim',
+              onPress: () => {
+                firebase
+                  .auth()
+                  .createUserWithEmailAndPassword(mail, password)
+                  .then(loginUserSucess)
+                  .catch(error => {
+                    loginUserFailed(error)
+                  })
+              }
+            }]
+          )
+        } else {
+          loginUserFailed(error)
+        }
       })
       .then(() => this.setState({ isLoading: false }))
   }
@@ -104,8 +131,8 @@ export default class Login extends React.Component {
 
         {
           this.state.message ?
-            <View>
-              <Text>{this.state.message}</Text>
+            <View style={styles.containerMessage}>
+              <Text style={styles.message}>{this.state.message}</Text>
             </View>
           :
             null
@@ -122,5 +149,11 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 5,
     paddingBottom: 5
+  },
+  containerMessage: {
+    marginTop: 10
+  },
+  message: {
+    color: 'red'
   }
 })
