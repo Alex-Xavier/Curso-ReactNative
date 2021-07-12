@@ -42,9 +42,5 @@ const incrementState = stateParameter => {
 
 // Função Pura / Função Imutável
 const pureIncrementState = stateParameter => {
-  const newState = Object.assign({}, stateParameter)
-
-  newState.number++
-
-  return newState
+  return Object.assign({}, stateParameter, { number: stateParameter.number + 1 })
 }
