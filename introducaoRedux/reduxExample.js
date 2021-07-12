@@ -1,6 +1,12 @@
 import { createStore } from 'redux'
 
-const reducer = () => 123
+const reducer = (state = 0, action) => {
+  if (action.type === 'SET_VALUE') {
+    return action.value
+  }
+
+  return state
+}
 
 const store = createStore()
 
