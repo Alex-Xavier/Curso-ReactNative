@@ -24,8 +24,13 @@ const reducer = (state = 0, action) => {
   }
 }
 
+// Store Creator
 const store = Redux.createStore(reducer)
 
+// Lib que efetua a integração entre o React e o Redux
+const { Provider, connect } = ReactRedux
+
+// Dispatchs | Alterando o State
 store.dispatch(increment())
 console.log(store.getState())
 
