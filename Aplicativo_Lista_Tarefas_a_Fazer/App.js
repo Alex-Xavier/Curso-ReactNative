@@ -1,1 +1,3 @@
-export { default as TodoApp } from './src/screens/TodoApp'
+import TodoApp from './src/screens/TodoApp'
+
+export default TodoApp
