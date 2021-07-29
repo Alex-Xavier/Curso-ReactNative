@@ -1,13 +1,13 @@
 import React from 'react'
-import { Text } from 'react-native'
 
 import StandardContainer from '../components/StandardContainer'
+import TodoForm from '../components/TodoForm'
 
 export default class TodoApp extends React.Component {
   render() {
     return (
       <StandardContainer>
-        <Text>Todo App</Text>
+        <TodoForm />
       </StandardContainer>
     )
   }
