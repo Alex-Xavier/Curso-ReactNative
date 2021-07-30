@@ -1,9 +1,17 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Button, View } from 'react-native'
+
+import Input from './Input'
 
 const TodoForm = () => (
   <View>
-    <Text>Sou o TodoForm</Text>
+    <View>
+      <Input />
+    </View>
+
+    <View>
+      <Button />
+    </View>
   </View>
 )
 
