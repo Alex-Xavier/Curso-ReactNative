@@ -3,7 +3,7 @@ import { View, Button, StyleSheet } from 'react-native'
 
 import Input from './Input'
 
-export default class TodoForm extends React.Component {
+export default class TasksForm extends React.Component {
   constructor(props) {
     super(props)
 
@@ -34,7 +34,7 @@ export default class TodoForm extends React.Component {
 
         <View style={styles.buttonContainer}>
           <Button
-            title='ADD'
+            title='Salvar'
             onPress={() => this.onPress()}
           />
         </View>

@@ -1,13 +1,13 @@
 import React from 'react'
 
 import StandardContainer from '../components/StandardContainer'
-import TodoForm from '../components/TodoForm'
+import TasksForm from '../components/TasksForm'
 
-export default class TodoApp extends React.Component {
+export default class TasksApp extends React.Component {
   render() {
     return (
       <StandardContainer>
-        <TodoForm />
+        <TasksForm />
       </StandardContainer>
     )
   }
