@@ -1,6 +1,6 @@
-const ADD_TASK = 'ADD_TASK'
+export const ADD_TASK = 'ADD_TASK'
 
-const addTask = text => ({
+export const addTask = text => ({
   type: ADD_TASK,
   text
 })
