@@ -10,7 +10,9 @@
   "dependencies": {
     "expo": "~42.0.1",
     "react": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "redux": "^4.1.1",
+    "react-redux": "^7.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
