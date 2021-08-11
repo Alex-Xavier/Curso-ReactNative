@@ -1,9 +1,12 @@
 import React from 'react'
 import { View, Button, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
 
 import Input from './Input'
 
-export default class TasksForm extends React.Component {
+import { addTask } from '../actions'
+
+class TasksForm extends React.Component {
   constructor(props) {
     super(props)
 
@@ -17,7 +20,7 @@ export default class TasksForm extends React.Component {
   }
   
   onPress() {
-    console.log(this.state.text)
+    this.props.dispatchAddTask(this.state.text)
   }
 
   render() {
@@ -54,3 +57,7 @@ const styles = StyleSheet.create({
     flex: 1
   }
 })
+
+export default connect(null, {
+  dispatchAddTask: addTask
+})(TasksForm)
