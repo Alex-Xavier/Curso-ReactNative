@@ -1,3 +1,3 @@
-import TodoApp from './src/screens/TodoApp'
+import TasksApp from './src/screens/TasksApp'
 
-export default TodoApp
+export default TasksApp
