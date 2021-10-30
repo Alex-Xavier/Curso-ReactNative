@@ -21,6 +21,7 @@ class TasksForm extends React.Component {
   
   onPress() {
     this.props.dispatchAddTask(this.state.text)
+    this.setState({ text: '' })
   }
 
   render() {
